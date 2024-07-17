@@ -6,14 +6,15 @@ node_js:
 
 before_install:
   - test/web-platform-tests/tests/wpt make-hosts-file | sudo tee -a /etc/hosts
-  - if [ ! -d "$HOME/.pyenv" ]; then curl https://pyenv.run | bash; fi
-  - export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
+  - if [ -d "/opt/pyenv" ]; then export PYENV_ROOT="/opt/pyenv"; else curl https://pyenv.run | bash; export PYENV_ROOT="$HOME/.pyenv"; fi
+  - export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
   - eval "$(pyenv init --path)"
   - eval "$(pyenv init -)"
   - eval "$(pyenv virtualenv-init -)"
   - pyenv install 2.7.18 || true
   - pyenv global 2.7.18
   - python --version
+  
 install:
   - yarn 
 
