@@ -11,10 +11,10 @@ before_install:
   - eval "$(pyenv init --path)"
   - eval "$(pyenv init -)"
   - eval "$(pyenv virtualenv-init -)"
-  - pyenv install 2.7.18 || true
+  - yes | pyenv install 2.7.18 || true
   - pyenv global 2.7.18
   - python --version
-  
+
 install:
   - yarn 
 
