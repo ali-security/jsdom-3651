@@ -3,6 +3,9 @@ node_js:
   - 10
   - 12
   - '13'
+
+dist: bionic
+
 before_install:
   - test/web-platform-tests/tests/wpt make-hosts-file | sudo tee -a /etc/hosts
   - sudo apt-get update
